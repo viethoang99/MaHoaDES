@@ -4,7 +4,7 @@ namespace MaHoaDES
 {
     class RoundKey
     {
-        
+
         public string KhoaChinh; //khoá chính 64bit
         public static string[] KhoaPhu { get; private set; }//mảng 16 khoá con
 
@@ -126,10 +126,11 @@ namespace MaHoaDES
             KhoaPhu = new string[16];// mảng khoá phụ cho 16 round
             //chuyển khóa sang nhị phân
             string KhoaChinh = ChuyenASCsangNhiPhan(keyASC);
+            string K = KhoaChinh;
             //loại bỏ bit thừa thành 56bit
             KhoaChinh = boBitPanity(KhoaChinh);
             //hoán vị 
-            string KeySauPC1 = HoanVi(KhoaChinh, keyp);// đưa qua hộp hoán vị nén Pbox
+            string KeySauPC1 = HoanVi(K, keyp);// đưa qua hộp hoán vị nén Pbox
 
             //chia thành 2 nửa trái phải
             string left = KeySauPC1.Substring(0, 28);
