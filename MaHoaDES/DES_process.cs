@@ -27,7 +27,7 @@ namespace MaHoaDES
                                                     42, 10, 50, 18, 58, 26, 33, 1, 41, 9,
                                                     49, 17, 57, 25 };
         //thực hiện mã hoá
-        public string MaHoa(string plaintext, string keyDES, int chose)//chose=1 mã hoá, chose=-1 giải m
+        public string MaHoa(string plaintext, string keyDES, int chose,TextBox tb)//chose=1 mã hoá, chose=-1 giải m
         {
             RoundKey.SinhKhoaCon(keyDES);//chạy hàm tạo khoá con cho các round
             string plainText;
@@ -40,7 +40,7 @@ namespace MaHoaDES
             {
                 plainText = plaintext;
             }
-
+            tb.Text = "Chuoi ma hoa la: " + plainText + "\r\n\r\n";
             string[] pt = Method.TachChuoi(plainText);//chia thành mảng các chuỗi 64bit để xly
 
             string SauIP, left, right, F;
@@ -49,6 +49,7 @@ namespace MaHoaDES
 
             for (int i = 0; i < pt.Length; i++)//xử lý từng khối 64bit 
             {
+                tb.Text = tb.Text + "Xử lý chuỗi thứ " + (i + 1).ToString() + ": " + pt[i] + " \r\n";
                 string temp = "";
                 SauIP = Method.HoanVi(pt[i], initial_perm);//đưa qua hộp hoán vị đầu vào
                                                             //chia đôi chuỗi
@@ -63,6 +64,11 @@ namespace MaHoaDES
                     temp = left;
                     left = right;
                     right = temp;
+                    int iTemp = (chose == 1 ? j : 15 - j) + 1;
+                    string strTemp = left + right;
+                    tb.Text = tb.Text + "Round " + iTemp.ToString() + ": " + "\r\n" +
+                        "\tC = " + strTemp + "\r\n" + "\tK = " + RoundKey.KhoaPhu[chose == 1 ? j : 15 - j]
+                        + "\r\n";
                 }
                 string temp1 = "";
 
@@ -71,6 +77,7 @@ namespace MaHoaDES
                 temp1 += left;
 
                 CipherText += Method.HoanVi(temp1, final_perm);//đưa qua hộp hvi đầu ra
+                tb.Text = tb.Text + "Hoán vị: " + CipherText + "\r\n\r\n";
             }
             //CipherText = Method.Binary2String(CipherText);
             if (chose == -1)

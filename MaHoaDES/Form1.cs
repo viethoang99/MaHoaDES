@@ -25,7 +25,9 @@ namespace MaHoaDES
             des = new DES_process();
             if (txbKhoa.Text.Length == 8)
             {
-                string cipher = des.MaHoa(txbBanRo.Text, txbKhoa.Text, 1);
+                txbKetQua.Text = "";
+                txbQuaTrinh.Text = "";
+                string cipher = des.MaHoa(txbBanRo.Text, txbKhoa.Text, 1,txbQuaTrinh);
                 txbKetQua.Text = cipher;
             }
             else
@@ -33,8 +35,10 @@ namespace MaHoaDES
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            txbKetQua.Text = "";
+            txbQuaTrinh.Text = "";
             des = new DES_process();
-            string plain = des.MaHoa(TxbMaHoa.Text, txbKhoa.Text, -1);
+            string plain = des.MaHoa(TxbMaHoa.Text, txbKhoa.Text, -1,txbQuaTrinh);
             txbKetQua.Text = plain;
         }
     }

@@ -18,3 +18,13 @@ C:\Users\Admin\Documents\GitHub\MaHoaDES\MaHoaDES\obj\Debug\MaHoaDES.csproj.Gene
 C:\Users\Admin\Documents\GitHub\MaHoaDES\MaHoaDES\obj\Debug\MaHoaDES.csproj.CoreCompileInputs.cache
 C:\Users\Admin\Documents\GitHub\MaHoaDES\MaHoaDES\obj\Debug\MaHoaDES.exe
 C:\Users\Admin\Documents\GitHub\MaHoaDES\MaHoaDES\obj\Debug\MaHoaDES.pdb
+D:\Project\C#\MaHoaDES\MaHoaDES\bin\Debug\MaHoaDES.exe.config
+D:\Project\C#\MaHoaDES\MaHoaDES\bin\Debug\MaHoaDES.exe
+D:\Project\C#\MaHoaDES\MaHoaDES\bin\Debug\MaHoaDES.pdb
+D:\Project\C#\MaHoaDES\MaHoaDES\obj\Debug\MaHoaDES.csprojAssemblyReference.cache
+D:\Project\C#\MaHoaDES\MaHoaDES\obj\Debug\MaHoaDES.Form1.resources
+D:\Project\C#\MaHoaDES\MaHoaDES\obj\Debug\MaHoaDES.Properties.Resources.resources
+D:\Project\C#\MaHoaDES\MaHoaDES\obj\Debug\MaHoaDES.csproj.GenerateResource.cache
+D:\Project\C#\MaHoaDES\MaHoaDES\obj\Debug\MaHoaDES.csproj.CoreCompileInputs.cache
+D:\Project\C#\MaHoaDES\MaHoaDES\obj\Debug\MaHoaDES.exe
+D:\Project\C#\MaHoaDES\MaHoaDES\obj\Debug\MaHoaDES.pdb
