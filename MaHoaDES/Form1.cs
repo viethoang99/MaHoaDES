@@ -16,5 +16,19 @@ namespace MaHoaDES
         {
             InitializeComponent();
         }
+
+        int MaHoaOrGiaMa = 1;//chế độ(=1:mã hoá, =-1:giải mã)
+        //RoundKey key;
+        F_function des;
+        //void MaHoa()
+        //{
+        //    string cipher = des.MaHoa(txbBanRo.Text, txbKhoa.Text, chose: MaHoaOrGiaMa);
+        //    txbKetQua.Text = cipher;
+        //}
+        private void btnMaHoa_Click(object sender, EventArgs e)
+        {
+            string cipher = des.MaHoa(txbBanRo.Text, txbKhoa.Text, 1);
+            txbKetQua.Text = cipher;
+        }
     }
 }

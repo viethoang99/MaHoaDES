@@ -1,0 +1,10 @@
+C:\Users\Hoang Viet\Desktop\MaHoaDES\MaHoaDES\bin\Debug\MaHoaDES.exe.config
+C:\Users\Hoang Viet\Desktop\MaHoaDES\MaHoaDES\bin\Debug\MaHoaDES.exe
+C:\Users\Hoang Viet\Desktop\MaHoaDES\MaHoaDES\bin\Debug\MaHoaDES.pdb
+C:\Users\Hoang Viet\Desktop\MaHoaDES\MaHoaDES\obj\Debug\MaHoaDES.csprojAssemblyReference.cache
+C:\Users\Hoang Viet\Desktop\MaHoaDES\MaHoaDES\obj\Debug\MaHoaDES.Form1.resources
+C:\Users\Hoang Viet\Desktop\MaHoaDES\MaHoaDES\obj\Debug\MaHoaDES.Properties.Resources.resources
+C:\Users\Hoang Viet\Desktop\MaHoaDES\MaHoaDES\obj\Debug\MaHoaDES.csproj.GenerateResource.cache
+C:\Users\Hoang Viet\Desktop\MaHoaDES\MaHoaDES\obj\Debug\MaHoaDES.csproj.CoreCompileInputs.cache
+C:\Users\Hoang Viet\Desktop\MaHoaDES\MaHoaDES\obj\Debug\MaHoaDES.exe
+C:\Users\Hoang Viet\Desktop\MaHoaDES\MaHoaDES\obj\Debug\MaHoaDES.pdb

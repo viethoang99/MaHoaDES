@@ -70,6 +70,7 @@
             this.btnMaHoa.TabIndex = 3;
             this.btnMaHoa.Text = "Mã hóa DES";
             this.btnMaHoa.UseVisualStyleBackColor = true;
+            this.btnMaHoa.Click += new System.EventHandler(this.btnMaHoa_Click);
             // 
             // txbKetQua
             // 

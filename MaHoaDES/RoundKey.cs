@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+﻿using System.IO;
+
 namespace MaHoaDES
 {
     class RoundKey
     {
         
         public string KhoaChinh; //khoá chính 64bit
-        public string[] KhoaPhu { get; private set; }//mảng 16 khoá con
+        public static string[] KhoaPhu { get; private set; }//mảng 16 khoá con
 
         //hoán vị Key
         private static readonly int[] keyp = { 57, 49, 41, 33, 25, 17, 9,
@@ -125,7 +121,7 @@ namespace MaHoaDES
             }
             return k;
         }
-        public void SinhKhoaCon(string keyASC)
+        public static void SinhKhoaCon(string keyASC)
         {
             KhoaPhu = new string[16];// mảng khoá phụ cho 16 round
             //chuyển khóa sang nhị phân
