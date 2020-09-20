@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Windows.Forms;
 
 namespace MaHoaDES
 {
@@ -78,7 +79,6 @@ namespace MaHoaDES
 
             doc.Close();
             file.Close();
-
             return ChuoiNhiPhan;
         }
         //loại bỏ bit kiểm tra chẵn lẻ
@@ -97,15 +97,15 @@ namespace MaHoaDES
             return str;
         }
         //hoán vị khóa 
-        public static string HoanVi(string k, int[] arr)
-        {
-            string per = "";
-            for (int i = 0; i < arr.Length; i++)
-            {
-                per += k[arr[i] - 1];
-            }
-            return per;
-        }
+        //public static string HoanVi(string k, int[] arr)
+        //{
+        //    string per = "";
+        //    for (int i = 0; i < arr.Length; i++)
+        //    {
+        //        per += k[arr[i] - 1];
+        //    }
+        //    return per;
+        //}
         public static string DichTrai(string k, int shifts)//phép dịch bit sang trái shifts lần
         {
             string s = "";
@@ -124,13 +124,13 @@ namespace MaHoaDES
         public static void SinhKhoaCon(string keyASC)
         {
             KhoaPhu = new string[16];// mảng khoá phụ cho 16 round
-            //chuyển khóa sang nhị phân
+                                        //chuyển khóa sang nhị phân
             string KhoaChinh = ChuyenASCsangNhiPhan(keyASC);
             string K = KhoaChinh;
             //loại bỏ bit thừa thành 56bit
             KhoaChinh = boBitPanity(KhoaChinh);
             //hoán vị 
-            string KeySauPC1 = HoanVi(K, keyp);// đưa qua hộp hoán vị nén Pbox
+            string KeySauPC1 = Method.HoanVi(K, keyp);// đưa qua hộp hoán vị nén Pbox
 
             //chia thành 2 nửa trái phải
             string left = KeySauPC1.Substring(0, 28);
@@ -144,7 +144,7 @@ namespace MaHoaDES
 
                 string combine = left + right;//Gộp lại
 
-                KhoaPhu[i] = HoanVi(combine, key_comp);//Đưa qua hộp nén lần 2 rồi lưu vào mảng
+                KhoaPhu[i] = Method.HoanVi(combine, key_comp);//Đưa qua hộp nén lần 2 rồi lưu vào mảng
             }
         }
     }

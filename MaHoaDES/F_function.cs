@@ -3,26 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+
 namespace MaHoaDES
 {
     class F_function
     {
-        //bảng hoán vị trước khi bắt đầu
-        private static readonly int[] initial_perm ={ 58, 50, 42, 34, 26, 18, 10, 2, 60, 52,
-                                                    44, 36, 28, 20, 12, 4, 62, 54, 46, 38,
-                                                    30, 22, 14, 6, 64, 56, 48, 40, 32, 24,
-                                                    16, 8, 57, 49, 41, 33, 25, 17, 9, 1,
-                                                    59, 51, 43, 35, 27, 19, 11, 3, 61, 53,
-                                                    45, 37, 29, 21, 13, 5, 63, 55, 47, 39,
-                                                    31, 23, 15, 7 };
-        //bảng hoán vị sau khi kết thúc
-        private static readonly int[] final_perm ={ 40, 8, 48, 16, 56, 24, 64, 32, 39, 7,
-                                                    47, 15, 55, 23, 63, 31, 38, 6, 46, 14,
-                                                    54, 22, 62, 30, 37, 5, 45, 13, 53, 21,
-                                                    61, 29, 36, 4, 44, 12, 52, 20, 60, 28,
-                                                    35, 3, 43, 11, 51, 19, 59, 27, 34, 2,
-                                                    42, 10, 50, 18, 58, 26, 33, 1, 41, 9,
-                                                    49, 17, 57, 25 };
         //bảng hoán vị mở rộng Expand 32->48bit 
         private static readonly int[] exp_d ={ 32, 1, 2, 3, 4, 5, 4, 5, 6, 7, 8, 9, 8,
                                             9, 10, 11, 12, 13, 12, 13, 14, 15, 16,
@@ -70,70 +56,18 @@ namespace MaHoaDES
 
 
         //hàm thực hiện mã hoá
-        public string MaHoa(string plaintext, string keyDES, int chose)//chose=1 mã hoá, chose=-1 giải m
-        {
-            RoundKey.SinhKhoaCon(keyDES);//chạy hàm tạo khoá con cho các round
-            string plainText;
-            if (chose == 1)//nếu là mã hoá
-            {
-                plainText = Method.String2Binary(plaintext);//chuyển chuỗi sang nhị phân
-                plainText = Method.ChinhDoDai64(plainText);//thêm bit 0 để số bit là bội của 64
-            }
-            else
-            {
-                plainText = plaintext;
-            }
-            string[] pt = Method.SplitString(plainText);//chia thành mảng các chuỗi 64bit để xly
-
-            string SauIP, left, right, F;
-
-            string CipherText = "";
-
-            for (int i = 0; i < pt.Length; i++)//xử lý từng khối 64bit 
-            {
-                string temp = "";
-                SauIP = Method.Permute(pt[i], initial_perm);//đưa qua hộp hoán vị đầu vào
-                                                            //chia đôi chuỗi
-                left = SauIP.Substring(0, 32);
-                right = SauIP.Substring(32, 32);
-
-                for (int j = 0; j < 16; j++)//16 round của DES
-                {
-                    F = HamF(right, RoundKey.KhoaPhu[chose == 1 ? j : 15 - j]);//tìm hàm F 
-                    left = Method.XOR(left, F);//xor left với F
-                                                //hoán vị
-                    temp = left;
-                    left = right;
-                    right = temp;
-                }
-                string temp1 = "";
-
-                //hoán vị 2 chuỗi
-                temp1 += right;
-                temp1 += left;
-
-                CipherText += Method.Permute(temp1, final_perm);//đưa qua hộp hvi đầu ra
-            }
-            //CipherText = Method.Binary2String(CipherText);
-            if (chose == -1)
-            {
-                CipherText = Method.CatDuLieu64(CipherText);//loại bỏ các bit đã thêm
-                CipherText = Method.Binary2String(CipherText);//đưa về kiểu string để hiển thị
-            }
-            return CipherText;
-        }
 
         private static string Tinh1SBox(string chuoiVao, int[,] sBox)//đưa 6 bit qua Sbox thu được 4bit
         {
             // giá trị hàng = giá trị hệ 10 của hai bit đầu và cuối
             // giá trị cột= giá trị hệ 10 của 4 bit còn lại
             string B0B5 = "" + chuoiVao[0] + chuoiVao[5];
-            int Hang = Method.Binary2Dec(B0B5);
+            int Hang = Method.Nhi_Thap(B0B5);
             string B1B2B3B4 = chuoiVao.Substring(1, 4);
-            int Cot = Method.Binary2Dec(B1B2B3B4);
+            int Cot = Method.Nhi_Thap(B1B2B3B4);
 
             int GiaTriSbox = sBox[Hang, Cot];
-            return (Method.Dec2Binary(GiaTriSbox, 4));// chuyển giá trị tại sbox sang nhị phân
+            return (Method.Thap_Nhi(GiaTriSbox, 4));// chuyển giá trị tại sbox sang nhị phân
         }
         public static string TinhSBox(string chuoiVao)//khi đưa cả 48bit qua Sbox
         {
@@ -155,10 +89,10 @@ namespace MaHoaDES
         }
         public string HamF(string ChuoiVao, string KhoaCon)//Hàm tìm F
         {
-            string KQ = Method.Permute(ChuoiVao, exp_d); // đưa qua hộp mở rộng Expand 32->48bit
+            string KQ = Method.HoanVi(ChuoiVao, exp_d); // đưa qua hộp mở rộng Expand 32->48bit
             KQ = Method.XOR(KQ, KhoaCon);// xor với khoá
             KQ = TinhSBox(KQ); // tính hộp s-box
-            KQ = Method.Permute(KQ, per); // tính P là ok
+            KQ = Method.HoanVi(KQ, per); // tính P là ok
             return KQ;
         }
     }

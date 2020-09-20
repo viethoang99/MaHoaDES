@@ -36,19 +36,21 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txbBanRo
             // 
-            this.txbBanRo.Location = new System.Drawing.Point(123, 53);
+            this.txbBanRo.Location = new System.Drawing.Point(123, 28);
             this.txbBanRo.Multiline = true;
             this.txbBanRo.Name = "txbBanRo";
-            this.txbBanRo.Size = new System.Drawing.Size(317, 37);
+            this.txbBanRo.Size = new System.Drawing.Size(317, 80);
             this.txbBanRo.TabIndex = 0;
             // 
             // txbKhoa
             // 
-            this.txbKhoa.Location = new System.Drawing.Point(123, 133);
+            this.txbKhoa.Location = new System.Drawing.Point(123, 136);
+            this.txbKhoa.MaxLength = 8;
             this.txbKhoa.Multiline = true;
             this.txbKhoa.Name = "txbKhoa";
             this.txbKhoa.Size = new System.Drawing.Size(317, 34);
@@ -56,15 +58,15 @@
             // 
             // TxbMaHoa
             // 
-            this.TxbMaHoa.Location = new System.Drawing.Point(123, 210);
+            this.TxbMaHoa.Location = new System.Drawing.Point(123, 213);
             this.TxbMaHoa.Multiline = true;
             this.TxbMaHoa.Name = "TxbMaHoa";
-            this.TxbMaHoa.Size = new System.Drawing.Size(317, 36);
+            this.TxbMaHoa.Size = new System.Drawing.Size(317, 94);
             this.TxbMaHoa.TabIndex = 2;
             // 
             // btnMaHoa
             // 
-            this.btnMaHoa.Location = new System.Drawing.Point(209, 297);
+            this.btnMaHoa.Location = new System.Drawing.Point(49, 380);
             this.btnMaHoa.Name = "btnMaHoa";
             this.btnMaHoa.Size = new System.Drawing.Size(154, 58);
             this.btnMaHoa.TabIndex = 3;
@@ -83,7 +85,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 56);
+            this.label1.Location = new System.Drawing.Point(24, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 17);
             this.label1.TabIndex = 5;
@@ -92,7 +94,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 140);
+            this.label2.Location = new System.Drawing.Point(24, 143);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 17);
             this.label2.TabIndex = 6;
@@ -101,17 +103,28 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 213);
+            this.label3.Location = new System.Drawing.Point(24, 216);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 17);
             this.label3.TabIndex = 7;
             this.label3.Text = "Bản mã hóa";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(286, 380);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(154, 58);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Giải mã DES";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -137,6 +150,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button1;
     }
 }
 

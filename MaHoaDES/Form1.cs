@@ -17,18 +17,25 @@ namespace MaHoaDES
             InitializeComponent();
         }
 
-        int MaHoaOrGiaMa = 1;//chế độ(=1:mã hoá, =-1:giải mã)
+        //int MaHoaOrGiaMa = 1;//chế độ(=1:mã hoá, =-1:giải mã)
         //RoundKey key;
-        F_function des;
-        //void MaHoa()
-        //{
-        //    string cipher = des.MaHoa(txbBanRo.Text, txbKhoa.Text, chose: MaHoaOrGiaMa);
-        //    txbKetQua.Text = cipher;
-        //}
+        DES_process des;
         private void btnMaHoa_Click(object sender, EventArgs e)
         {
-            string cipher = des.MaHoa(txbBanRo.Text, txbKhoa.Text, 1);
-            txbKetQua.Text = cipher;
+            des = new DES_process();
+            if (txbKhoa.Text.Length == 8)
+            {
+                string cipher = des.MaHoa(txbBanRo.Text, txbKhoa.Text, 1);
+                txbKetQua.Text = cipher;
+            }
+            else
+                MessageBox.Show("Khoá không hợp lệ");
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            des = new DES_process();
+            string plain = des.MaHoa(TxbMaHoa.Text, txbKhoa.Text, -1);
+            txbKetQua.Text = plain;
         }
     }
 }
